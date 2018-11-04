@@ -1,0 +1,1 @@
+The CNX-DIP40-L476CA is built from the CNX-C363-V10 with STM32L476. No external flash installed.
