@@ -1,0 +1,1 @@
+The CNX-DIP20-F413BA is built from the CNX-C372-V10 with STM32F413CG (1MB). No external flash installed.

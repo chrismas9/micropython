@@ -1,0 +1,1 @@
+The CNX-DIP20-F411BA is built from the CNX-C372-V10 with STM32F411. No external flash installed.

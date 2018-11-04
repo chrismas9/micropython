@@ -1,0 +1,1 @@
+The CNX-DIP32-L476AA is built from the CNX-C362-V10 with STM32L476. No external flash installed.
