@@ -17,7 +17,7 @@ void STM32L476DISC_board_early_init(void);
 #define MICROPY_HW_ENABLE_USB       (1)
 #define MICROPY_HW_ENABLE_ADC       (1)
 #define MICROPY_HW_ENABLE_DAC       (1)
-#define MICROPY_HW_ENABLE_CAN       (1)
+#define MICROPY_HW_ENABLE_CAN       (1) // Shared with "U-H3"
 #define MICROPY_HW_HAS_SDCARD       (0)
 
 // use external SPI flash for storage
