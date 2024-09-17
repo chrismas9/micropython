@@ -59,6 +59,10 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_UART2_TX     (pin_A2)  // B4
 #define MICROPY_HW_UART2_RX     (pin_A3)  // B5
 
+#define MICROPY_HW_UART3_NAME   "U-H11"
+#define MICROPY_HW_UART3_TX     (pin_B10)  // H11
+#define MICROPY_HW_UART3_RX     (pin_B11)  // H12
+
 #define MICROPY_HW_UART4_NAME   "U-B14"
 #define MICROPY_HW_UART4_TX     (pin_A0)  // B14
 #define MICROPY_HW_UART4_RX     (pin_A1)  // B15
