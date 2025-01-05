@@ -1,0 +1,1 @@
+The CNX-DIP20-L452AA is built from the CNX-C361-V10 with STM32L452. No external flash installed.

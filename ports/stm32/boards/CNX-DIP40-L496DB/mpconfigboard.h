@@ -2,7 +2,7 @@
 void STM32L476DISC_board_early_init(void);
 */
 
-#define MICROPY_HW_BOARD_NAME       "CNX-DIP40-L496AA"
+#define MICROPY_HW_BOARD_NAME       "CNX-DIP40-L496DA"
 #define MICROPY_HW_MCU_NAME         "STM32L496"
 #define MICROPY_PY_SYS_PLATFORM     "ConnexiDIP"
 #define MICROPY_HW_FLASH_FS_LABEL   "CNXflash"
@@ -17,7 +17,7 @@ void STM32L476DISC_board_early_init(void);
 #define MICROPY_HW_ENABLE_USB       (1)
 #define MICROPY_HW_ENABLE_ADC       (1)
 #define MICROPY_HW_ENABLE_DAC       (1)
-#define MICROPY_HW_ENABLE_CAN       (1)
+#define MICROPY_HW_ENABLE_CAN       (1) // Shared with "U-H3"
 #define MICROPY_HW_HAS_SDCARD       (0)
 
 // use external SPI flash for storage
@@ -39,8 +39,7 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_BDEV_WRITEBLOCKS(src, bl, n) spi_bdev_writeblocks(&spi_bdev, (src), (bl), (n))
 */
 
-// MSI is used and is 4MHz,
-// Resulting core frequency is 80MHz:
+// MSI is used and is 4MHz. MCU clock is 80MHz.
 #define MICROPY_HW_CLK_PLLM (1)
 #define MICROPY_HW_CLK_PLLN (40)
 #define MICROPY_HW_CLK_PLLP (RCC_PLLP_DIV7)
@@ -68,6 +67,14 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_UART4_TX     (pin_A0)  // B14
 #define MICROPY_HW_UART4_RX     (pin_A1)  // B15
 
+#define MICROPY_HW_UART5_NAME   "U-H19"
+#define MICROPY_HW_UART5_TX     (pin_C12)  // H19
+#define MICROPY_HW_UART5_RX     (pin_D2)  // H20
+
+#define MICROPY_HW_LPUART1_NAME "U-B12"
+#define MICROPY_HW_LPUART1_TX   (pin_C1)  // B12
+#define MICROPY_HW_LPUART1_RX   (pin_C0)  // B13
+
 // I2C busses
 #define MICROPY_HW_I2C1_NAME "I-H5"
 #define MICROPY_HW_I2C1_SCL (pin_B6) // H5
@@ -90,7 +97,7 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_SPI2_MISO (pin_C2) // H16
 
 // CAN busses
-#define MICROPY_HW_CAN1_NAME "C-H3"
+#define MICROPY_HW_CAN1_NAME "C-H3"           // shared with "U-H3"
 #define MICROPY_HW_CAN1_TX (pin_B9) // H3
 #define MICROPY_HW_CAN1_RX (pin_B8) // H4
 
@@ -101,9 +108,9 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_USRSW_PRESSED    (0)
 
 // Board has 3 LEDs
-#define MICROPY_HW_LED1             (pin_A8) // red
-#define MICROPY_HW_LED2             (pin_C9) // green
-#define MICROPY_HW_LED3             (pin_B2) // blue
+#define MICROPY_HW_LED1             (pin_H3) // red
+#define MICROPY_HW_LED2             (pin_A14) // green
+#define MICROPY_HW_LED3             (pin_A13) // blue
 #define MICROPY_HW_LED_ON(pin)      (mp_hal_pin_high(pin))
 #define MICROPY_HW_LED_OFF(pin)     (mp_hal_pin_low(pin))
 
