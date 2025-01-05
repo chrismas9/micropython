@@ -1,7 +1,7 @@
 MCU_SERIES = l4
-CMSIS_MCU = STM32L496xx
-AF_FILE = boards/stm32l496_af.csv
-LD_FILES = boards/stm32l496xg.ld boards/common_basic.ld
+CMSIS_MCU = STM32L452xx
+AF_FILE = boards/stm32l452_af.csv
+LD_FILES = boards/stm32l452xe.ld boards/common_basic.ld
 OPENOCD_CONFIG = boards/openocd_stm32l4.cfg
 
 # CNX-specific frozen modules

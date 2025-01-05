@@ -1,0 +1,1 @@
+The CNX-DIP32-L452CA is built from the CNX-C383-V10 with STM32L452. No external flash installed. With USB.

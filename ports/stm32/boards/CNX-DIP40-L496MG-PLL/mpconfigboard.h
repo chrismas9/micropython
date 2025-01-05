@@ -39,18 +39,25 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_BDEV_WRITEBLOCKS(src, bl, n) spi_bdev_writeblocks(&spi_bdev, (src), (bl), (n))
 */
 
-// MSI is used and is 4MHz,
-// Resulting core frequency is 80MHz:
-#define MICROPY_HW_CLK_PLLM (1)
+// HSE is 12 MHz external crystal. MCU clock is 80MHz.
+#define MICROPY_HW_CLK_USE_HSE      (1)
+#define MICROPY_HW_CLK_USE_BYPASS   (0)
+
+#define MICROPY_HW_CLK_PLLM (3)
 #define MICROPY_HW_CLK_PLLN (40)
 #define MICROPY_HW_CLK_PLLP (RCC_PLLP_DIV7)
-#define MICROPY_HW_CLK_PLLR (RCC_PLLR_DIV2)
+#define MICROPY_HW_CLK_PLLR (RCC_PLLR_DIV2) // (12 /3)=4, *40=160, /2=80.
 #define MICROPY_HW_CLK_PLLQ (RCC_PLLQ_DIV2)
-#define MICROPY_HW_FLASH_LATENCY    FLASH_LATENCY_4
+// PLLSAIQ is used for USB. It must be 48 MHz. Shares PLLM.
+#define MICROPY_HW_CLK_PLLSAIN (24)
+#define MICROPY_HW_CLK_PLLSAIP (2)
+#define MICROPY_HW_CLK_PLLSAIQ (2) // (12 /3)=4, *24=96, /2=48.
+#define MICROPY_HW_CLK_PLLSAIR (2)
 
 // The board has an external 32kHz crystal
 #define MICROPY_HW_RTC_USE_LSE      (1)
 
+#define MICROPY_HW_FLASH_LATENCY    FLASH_LATENCY_4
 // USART & UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"
 #define MICROPY_HW_UART1_TX     (pin_A9)  // H3
@@ -59,10 +66,6 @@ extern struct _spi_bdev_t spi_bdev;
 #define MICROPY_HW_UART2_NAME   "U-B4"
 #define MICROPY_HW_UART2_TX     (pin_A2)  // B4
 #define MICROPY_HW_UART2_RX     (pin_A3)  // B5
-
-#define MICROPY_HW_UART3_NAME   "U-H11"
-#define MICROPY_HW_UART3_TX     (pin_B10)  // H11
-#define MICROPY_HW_UART3_RX     (pin_B11)  // H12
 
 #define MICROPY_HW_UART4_NAME   "U-B14"
 #define MICROPY_HW_UART4_TX     (pin_A0)  // B14

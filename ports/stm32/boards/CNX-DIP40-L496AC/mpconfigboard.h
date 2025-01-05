@@ -53,8 +53,8 @@ extern struct _spi_bdev_t spi_bdev;
 
 // USART & UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"
-#define MICROPY_HW_UART1_TX     (pin_A9)  // H3
-#define MICROPY_HW_UART1_RX     (pin_A10) ///H4
+#define MICROPY_HW_UART1_TX     (pin_B6)  // H6
+#define MICROPY_HW_UART1_RX     (pin_B7) /// H4
 
 #define MICROPY_HW_UART2_NAME   "U-B4"
 #define MICROPY_HW_UART2_TX     (pin_A2)  // B4
