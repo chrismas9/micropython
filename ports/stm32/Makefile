@@ -23,8 +23,10 @@ endif
 # optionally the board variant).
 ifneq ($(BOARD_VARIANT),)
 BUILD ?= build-$(BOARD)-$(BOARD_VARIANT)
+FIRMWARE ?= $(BOARD)-$(BOARD_VARIANT)
 else
 BUILD ?= build-$(BOARD)
+FIRMWARE ?= $(BOARD)
 endif
 
 include ../../py/mkenv.mk
@@ -486,12 +488,12 @@ $(PY_BUILD)/parsenum.o: COPT += -Os
 $(PY_BUILD)/mpprint.o: COPT += -Os
 endif
 
-all: $(TOP)/lib/stm32lib/README.md all_main $(BUILD)/firmware.hex
+all: $(TOP)/lib/stm32lib/README.md all_main $(BUILD)/$(FIRMWARE).hex
 
 ifeq ($(MBOOT_ENABLE_PACKING),1)
-all_main: $(BUILD)/firmware.pack.dfu
+all_main: $(BUILD)/$(FIRMWARE).pack.dfu
 else
-all_main: $(BUILD)/firmware.dfu
+all_main: $(BUILD)/$(FIRMWARE).dfu
 endif
 
 # For convenience, automatically fetch required submodules if they don't exist
@@ -553,10 +555,10 @@ endef
 .PHONY: deploy deploy-stlink deploy-openocd
 
 ifeq ($(MBOOT_ENABLE_PACKING),1)
-deploy: $(BUILD)/firmware.pack.dfu
+deploy: $(BUILD)/$(FIRMWARE).pack.dfu
 	$(call RUN_DFU,$^)
 else
-deploy: $(BUILD)/firmware.dfu
+deploy: $(BUILD)/$(FIRMWARE).dfu
 	$(call RUN_DFU,$^)
 endif
 
@@ -570,16 +572,16 @@ ifeq ($(TEXT1_ADDR),)
 
 TEXT0_SECTIONS ?= .isr_vector .isr_extratext .text .data .ARM
 
-deploy-stlink: $(BUILD)/firmware.bin
+deploy-stlink: $(BUILD)/$(FIRMWARE).bin
 	$(call RUN_STLINK,$^,$(TEXT0_ADDR))
 
-deploy-openocd: $(BUILD)/firmware.bin
+deploy-openocd: $(BUILD)/$(FIRMWARE).bin
 	$(call RUN_OPENOCD,$^,$(TEXT0_ADDR))
 
-$(BUILD)/firmware.bin: $(BUILD)/firmware.elf
+$(BUILD)/$(FIRMWARE).bin: $(BUILD)/$(FIRMWARE).elf
 	$(call GENERATE_BIN,$@,$^,$(TEXT0_SECTIONS))
 
-$(BUILD)/firmware.dfu: $(BUILD)/firmware.bin
+$(BUILD)/$(FIRMWARE).dfu: $(BUILD)/$(FIRMWARE).bin
 	$(call GENERATE_DFU,$@,$^,$(TEXT0_ADDR))
 
 else
@@ -588,30 +590,30 @@ else
 TEXT0_SECTIONS ?= .isr_vector .isr_extratext
 TEXT1_SECTIONS ?= .text .data .ARM
 
-deploy-stlink: $(BUILD)/firmware0.bin $(BUILD)/firmware1.bin
+deploy-stlink: $(BUILD)/$(FIRMWARE)-0.bin $(BUILD)/$(FIRMWARE)-1.bin
 	$(call RUN_STLINK,$(word 1,$^),$(TEXT0_ADDR))
 	$(call RUN_STLINK,$(word 2,$^),$(TEXT1_ADDR))
 
-deploy-openocd: $(BUILD)/firmware0.bin $(BUILD)/firmware1.bin
+deploy-openocd: $(BUILD)/$(FIRMWARE)-0.bin $(BUILD)/$(FIRMWARE)-1.bin
 	$(call RUN_OPENOCD,$(word 1,$^),$(TEXT0_ADDR),$(word 2,$^),$(TEXT1_ADDR))
 
-$(BUILD)/firmware0.bin: $(BUILD)/firmware.elf
+$(BUILD)/$(FIRMWARE)-0.bin: $(BUILD)/$(FIRMWARE).elf
 	$(call GENERATE_BIN,$@,$^,$(TEXT0_SECTIONS))
 
-$(BUILD)/firmware1.bin: $(BUILD)/firmware.elf
+$(BUILD)/$(FIRMWARE)-1.bin: $(BUILD)/$(FIRMWARE).elf
 	$(call GENERATE_BIN,$@,$^,$(TEXT1_SECTIONS))
 
-$(BUILD)/firmware.dfu: $(BUILD)/firmware0.bin $(BUILD)/firmware1.bin
+$(BUILD)/$(FIRMWARE).dfu: $(BUILD)/$(FIRMWARE)-0.bin $(BUILD)/$(FIRMWARE)-1.bin
 	$(call GENERATE_DFU,$@,$(word 1,$^),$(TEXT0_ADDR),$(word 2,$^),$(TEXT1_ADDR))
 endif
 
-$(BUILD)/firmware.pack.dfu: $(BUILD)/firmware.dfu $(MBOOT_PACK_KEYS_FILE)
+$(BUILD)/$(FIRMWARE).pack.dfu: $(BUILD)/$(FIRMWARE).dfu $(MBOOT_PACK_KEYS_FILE)
 	$(call GENERATE_PACK_DFU,$@,$<)
 
-$(BUILD)/firmware.hex: $(BUILD)/firmware.elf
+$(BUILD)/$(FIRMWARE).hex: $(BUILD)/$(FIRMWARE).elf
 	$(call GENERATE_HEX,$@,$^)
 
-$(BUILD)/firmware.elf: $(OBJ)
+$(BUILD)/$(FIRMWARE).elf: $(OBJ)
 	$(call GENERATE_ELF,$@,$^)
 
 # List of sources for qstr extraction
