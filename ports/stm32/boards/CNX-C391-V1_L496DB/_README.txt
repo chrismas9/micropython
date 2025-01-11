@@ -1,0 +1,2 @@
+The CNX-DIP40-L496DA is built from the CNX-C391-V10/V11 with STM32L496RG. No external flash installed.
+Loads CNX-MANIFEST/manifest.py
