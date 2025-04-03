@@ -16,6 +16,7 @@
 #define MICROPY_HW_ENABLE_SDCARD    (0)
 
 // HSE is 12MHz. MCU clock is 96MHz.
+#define MICROPY_HW_CLK_USE_HSE      (1)
 #define MICROPY_HW_CLK_PLLM (6)
 #define MICROPY_HW_CLK_PLLN (96)
 #define MICROPY_HW_CLK_PLLP (2)
@@ -25,8 +26,6 @@
 
 // The board has an external 32kHz crystal
 #define MICROPY_HW_RTC_USE_LSE      (1)
-#define MICROPY_HW_RTC_USE_US       (0)
-#define MICROPY_HW_RTC_USE_CALOUT   (1)
 
 // USART & UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"

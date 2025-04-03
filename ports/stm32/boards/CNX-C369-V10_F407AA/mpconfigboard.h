@@ -17,6 +17,7 @@
 //#define MICROPY_HW_ENABLE_CAN       (1)
 
 // HSE is 12MHz
+#define MICROPY_HW_CLK_USE_HSE   (1)
 #define MICROPY_HW_CLK_PLLM (12)
 #define MICROPY_HW_CLK_PLLN (336)
 #define MICROPY_HW_CLK_PLLP (RCC_PLLP_DIV2)
@@ -25,8 +26,6 @@
 
 // The board has a 32kHz crystal for the RTC
 #define MICROPY_HW_RTC_USE_LSE      (1)
-#define MICROPY_HW_RTC_USE_US       (0)
-#define MICROPY_HW_RTC_USE_CALOUT   (1)
 
 // UART config
 #define MICROPY_HW_UART1_NAME   "U-L3"

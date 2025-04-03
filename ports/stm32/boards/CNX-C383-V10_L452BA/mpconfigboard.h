@@ -24,10 +24,7 @@
 #define MICROPY_HW_FLASH_LATENCY FLASH_LATENCY_4
 
 // The board has an external 32kHz crystal
-#define MICROPY_HW_RTC_USE_LSE      (1)
 #define MICROPY_HW_RTC_USE_BYPASS   (1)
-#define MICROPY_HW_RTC_USE_US       (0)
-#define MICROPY_HW_RTC_USE_CALOUT   (0)
 
 // Port naming convention.
 // Ports are named after the first clock pin or first output pin if no clock.
