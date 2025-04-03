@@ -28,14 +28,14 @@
 
 // MSI is used and is 4MHz
 #define MICROPY_HW_CLK_PLLM (1)
-#define MICROPY_HW_CLK_PLLN (16) // Change to 40 for 80MHz.
-#define MICROPY_HW_CLK_PLLR (RCC_PLLR_DIV2) // SYSCLK = 4*1*16/2 = 32MHz.
+#define MICROPY_HW_CLK_PLLN (40) // Change to 16 for 32MHz.
+#define MICROPY_HW_CLK_PLLR (RCC_PLLR_DIV2) // SYSCLK = 4*1*40/2 = 80MHz.
 #define MICROPY_HW_CLK_PLLP (RCC_PLLP_DIV7)
 #define MICROPY_HW_CLK_PLLQ (RCC_PLLQ_DIV2)
 #define MICROPY_HW_FLASH_LATENCY    FLASH_LATENCY_4
 
 // The board has an external 32kHz crystal
-#define MICROPY_HW_RTC_USE_LSE      (1)
+#define MICROPY_HW_RTC_USE_BYPASS   (1)
 
 // UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"

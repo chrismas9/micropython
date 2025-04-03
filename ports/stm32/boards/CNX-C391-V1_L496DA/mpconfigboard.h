@@ -24,8 +24,8 @@
 #define MICROPY_HW_CLK_PLLQ (RCC_PLLQ_DIV2)
 #define MICROPY_HW_FLASH_LATENCY    FLASH_LATENCY_4
 
-// The board has an external 32kHz crystal
-#define MICROPY_HW_RTC_USE_LSE      (1)
+// The board has a 32kHz oscillator for the RTC
+#define MICROPY_HW_RTC_USE_BYPASS   (1)
 
 // USART & UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"

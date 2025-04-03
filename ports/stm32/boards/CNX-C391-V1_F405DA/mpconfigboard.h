@@ -17,17 +17,16 @@
 #define MICROPY_HW_ENABLE_USB       (1)
 #define MICROPY_HW_ENABLE_CAN       (1)
 
-// HSE is 12MHz
+// HSE is 12MHz oscillator.
+#define MICROPY_HW_CLK_USE_BYPASS   (1)
 #define MICROPY_HW_CLK_PLLM (12)
 #define MICROPY_HW_CLK_PLLN (336)
 #define MICROPY_HW_CLK_PLLP (RCC_PLLP_DIV2)
 #define MICROPY_HW_CLK_PLLQ (7)
 #define MICROPY_HW_CLK_LAST_FREQ (1)
 
-// The board has a 32kHz crystal for the RTC
-#define MICROPY_HW_RTC_USE_LSE      (1)
-#define MICROPY_HW_RTC_USE_US       (0)
-#define MICROPY_HW_RTC_USE_CALOUT   (1)
+// The board has a 32kHz oscillator for the RTC
+#define MICROPY_HW_RTC_USE_BYPASS   (1)
 
 // UART config
 #define MICROPY_HW_UART1_NAME   "U-H3"
