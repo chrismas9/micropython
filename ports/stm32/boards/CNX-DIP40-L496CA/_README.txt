@@ -1,1 +1,0 @@
-The CNX-DIP40-L496CA is built from the CNX-C363-V10 with STM32L496RG. No external flash installed.
