@@ -1,17 +1,12 @@
 /*
-    GNU linker script for STM32L432KC
+    GNU linker script for STM32L433CC wirh 256K Flash.
 */
 
-/* Specify the memory areas.
-   FS_SIZE is not a region, it is only used to define the File System length.
-*/
+/* Specify the memory areas */
 MEMORY
 {
-    ALL_FLASH (rx)  : ORIGIN = 0x08000000,  LENGTH = 256K
-    FS_SIZE (r)     : ORIGIN = 0,           LENGTH = 18K /* Adjust the File System size here */
-
-    FLASH (rx)      : ORIGIN = ORIGIN(ALL_FLASH), LENGTH = LENGTH(ALL_FLASH) - LENGTH(FS_SIZE)
-    FLASH_FS (r)    : ORIGIN = ORIGIN(FLASH) + LENGTH(FLASH), LENGTH = LENGTH(FS_SIZE)
+    FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 242K /* sectors 0-120 */
+    FLASH_FS (r)    : ORIGIN = 0x0803C800, LENGTH = 14K /* sectors 121-127 */
     RAM (xrw)       : ORIGIN = 0x20000000, LENGTH = 64K /* SRAM1, 48K + SRAM2, 16K */
 }
 

@@ -8,7 +8,7 @@
 MEMORY
 {
     ALL_FLASH (rx)  : ORIGIN = 0x08000000,  LENGTH = 256K
-    FS_SIZE (r)     : ORIGIN = 0,           LENGTH = 18K /* Adjust the File System size here */
+    FS_SIZE (r)     : ORIGIN = 0,           LENGTH = 24K /* Adjust the File System size here */
 
     FLASH (rx)      : ORIGIN = ORIGIN(ALL_FLASH), LENGTH = LENGTH(ALL_FLASH) - LENGTH(FS_SIZE)
     FLASH_FS (r)    : ORIGIN = ORIGIN(FLASH) + LENGTH(FLASH), LENGTH = LENGTH(FS_SIZE)
