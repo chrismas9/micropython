@@ -10,7 +10,7 @@
 #define MICROPY_PY_FRAMEBUF         (0) // 4KB.
 #define MICROPY_PY_USOCKET          (0)
 #define MICROPY_PY_NETWORK          (0)
-#define MICROPY_PY_ONEWIRE          (0)
+#define MICROPY_PY_ONEWIRE          (1)
 #define MICROPY_PY_STM              (0)
 #define MICROPY_PY_PYB_LEGACY       (1)
 #define MICROPY_PY_UHEAPQ           (0)

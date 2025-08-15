@@ -1,0 +1,1 @@
+The CNX-C378-V10_L433BA is built from the CNX-C378-V10 with STM32L433. No external flash installed. With USB.

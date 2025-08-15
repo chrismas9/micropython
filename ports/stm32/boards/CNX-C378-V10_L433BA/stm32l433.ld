@@ -1,5 +1,5 @@
 /*
-    GNU linker script for STM32L432KC
+    GNU linker script for STM32L433CC
 */
 
 /* Specify the memory areas.
