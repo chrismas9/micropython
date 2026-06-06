@@ -1,0 +1,15 @@
+MCU_SERIES = l4
+CMSIS_MCU = STM32L496xx
+AF_FILE = boards/stm32l496_af.csv
+LD_FILES = boards/$(BOARD)/stm32l496xg_nofs.ld boards/common_basic.ld
+OPENOCD_CONFIG = boards/openocd_stm32l4.cfg
+
+# MicroPython settings
+# MICROPY_VFS_LFS2 = 1
+
+# The following allows UART interrupts to be serviced during Flash erase.
+MICROPY_HW_ENABLE_ISR_UART_FLASH_FUNCS_IN_RAM = 1
+
+# CNX specific settings.
+FIRMWARE = $(BOARD)
+FROZEN_MANIFEST ?= boards/CNX-MANIFEST/manifest.py
